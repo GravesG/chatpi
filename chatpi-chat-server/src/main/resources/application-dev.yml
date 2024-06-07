@@ -1,0 +1,11 @@
+chatpi:
+  mysql:
+    ip: 120.241.47.87
+    port: 13306
+    db: chatpi_dev
+    username: chatpi_admin
+    password: Enc(HEQkclNSLnrgUoQr3tAFzYtwlsgUZ+f8)
+  redis:
+    host: 120.241.47.93
+    port: 16379
+    password: Enc(YKJQ9vaFQU6NOxoOuonWRuiLVgNL3Px2)

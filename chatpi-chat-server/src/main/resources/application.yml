@@ -1,0 +1,51 @@
+## 核心配置
+spring:
+  application:
+    name: chatpi-chat-server
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://${chatpi.mysql.ip}:${chatpi.mysql.port}/${chatpi.mysql.db}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: ${chatpi.mysql.username}
+    password: ${chatpi.mysql.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 10
+      max-lifetime: 30000
+      connection-test-query: SELECT 1
+  redis:
+    host: ${chatpi.redis.host}
+    port: ${chatpi.redis.port}
+    database: 0
+    timeout: 1800000
+    password: ${chatpi.redis.password}
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+## 日志配置
+logging:
+  level:
+    org.springframework.web: INFO
+
+## ORM
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+
+## JWT
+
+## WX
+
+## chatAI
+
+## RocketMQ
+
+## 信息脱敏
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    property:
+      prefix: Enc(
+      suffix: )
