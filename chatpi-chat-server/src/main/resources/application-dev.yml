@@ -9,3 +9,7 @@ chatpi:
     host: 120.241.47.93
     port: 16379
     password: Enc(YKJQ9vaFQU6NOxoOuonWRuiLVgNL3Px2)
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
