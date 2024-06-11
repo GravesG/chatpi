@@ -1,0 +1,56 @@
+package com.im.chatpi.common.common.intecepter;
+
+import cn.hutool.core.collection.CollectionUtil;
+import com.im.chatpi.common.common.domain.dto.RequestInfo;
+import com.im.chatpi.common.common.exception.HttpErrorEnum;
+import com.im.chatpi.common.common.utils.RequestHolder;
+import com.im.chatpi.common.user.enums.BlackTypeEnum;
+import com.im.chatpi.common.user.service.cache.UserCache;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
+/**
+ * 黑名单拦截器
+ * TokenInterceptor -> CollectorInterceptor -> BlackInterceptor
+ * @author ：GuoZeTao
+ * @date ：Created in 2024/6/11 11:17
+ * @description：
+ */
+@Order(2)
+@Slf4j
+@Component
+public class BlackInterceptor implements HandlerInterceptor {
+    @Autowired
+    private UserCache userCache;
+    
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        Map<Integer, Set<String>> blackMap = userCache.getBlackMap();
+        RequestInfo requestInfo = RequestHolder.get();
+        if (inBlackList(requestInfo.getUid(), blackMap.get(BlackTypeEnum.UID.getType()))) {
+            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
+            return false;
+        }
+        if (inBlackList(requestInfo.getIp(), blackMap.get(BlackTypeEnum.IP.getType()))) {
+            HttpErrorEnum.ACCESS_DENIED.sendHttpError(response);
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean inBlackList(Object target, Set<String> blackSet) {
+        if (Objects.isNull(target) || CollectionUtil.isEmpty(blackSet)) {
+            return false;
+        }
+        return blackSet.contains(target.toString());
+    }
+}
