@@ -9,6 +9,8 @@ chatpi:
     host: 120.241.47.93
     port: 16379
     password: Enc(YKJQ9vaFQU6NOxoOuonWRuiLVgNL3Px2)
+  jwt:
+    secret: qaz123
 
 mybatis-plus:
   configuration:
