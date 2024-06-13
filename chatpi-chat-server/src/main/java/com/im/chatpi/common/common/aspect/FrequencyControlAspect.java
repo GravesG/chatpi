@@ -3,7 +3,7 @@ package com.im.chatpi.common.common.aspect;
 import cn.hutool.core.util.StrUtil;
 import com.im.chatpi.common.common.annotation.FrequencyControl;
 import com.im.chatpi.common.common.domain.dto.FrequencyControlDTO;
-import com.im.chatpi.common.common.service.FrequencyControlUtil;
+import com.im.chatpi.common.common.service.frequencycontrol.FrequencyControlUtil;
 import com.im.chatpi.common.common.utils.RequestHolder;
 import com.im.chatpi.common.common.utils.SpElUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static com.im.chatpi.common.common.service.FrequencyControlStrategyFactory.TOTAL_COUNT_WITH_IN_FIX_TIME_FREQUENCY_CONTROLLER;
+import static com.im.chatpi.common.common.service.frequencycontrol.FrequencyControlStrategyFactory.TOTAL_COUNT_WITH_IN_FIX_TIME_FREQUENCY_CONTROLLER;
 
 /**
  * 防重

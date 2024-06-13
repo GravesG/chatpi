@@ -1,4 +1,4 @@
-package com.im.chatpi.common.common.service;
+package com.im.chatpi.common.common.service.frequencycontrol;
 
 import com.im.chatpi.common.common.domain.dto.FrequencyControlDTO;
 import com.im.chatpi.common.common.utils.AssertUtil;

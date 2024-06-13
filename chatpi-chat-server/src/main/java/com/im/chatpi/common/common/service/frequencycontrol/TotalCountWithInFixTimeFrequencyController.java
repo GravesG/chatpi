@@ -1,4 +1,4 @@
-package com.im.chatpi.common.common.service;
+package com.im.chatpi.common.common.service.frequencycontrol;
 
 import com.im.chatpi.common.common.domain.dto.FrequencyControlDTO;
 import com.im.chatpi.common.common.utils.RedisUtils;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static com.im.chatpi.common.common.service.FrequencyControlStrategyFactory.TOTAL_COUNT_WITH_IN_FIX_TIME_FREQUENCY_CONTROLLER;
+import static com.im.chatpi.common.common.service.frequencycontrol.FrequencyControlStrategyFactory.TOTAL_COUNT_WITH_IN_FIX_TIME_FREQUENCY_CONTROLLER;
 
 /**
  * @author ：GuoZeTao
