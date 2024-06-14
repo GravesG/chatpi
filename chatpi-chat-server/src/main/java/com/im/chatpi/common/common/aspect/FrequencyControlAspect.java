@@ -45,7 +45,7 @@ public class FrequencyControlAspect {
             String key = "";
             switch (frequencyControl.target()) {
                 case EL:
-                    key = frequencyControl.spEl();
+                    key = SpElUtils.parseSpEl(method, joinPoint.getArgs(), frequencyControl.spEl());
                     break;
                 case UID:
                     // 从请求上下文获取
