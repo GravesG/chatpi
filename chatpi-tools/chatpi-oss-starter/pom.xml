@@ -10,7 +10,10 @@
     <artifactId>chatpi-oss-starter</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.im.chatpi</groupId>
+            <artifactId>chatpi-common-starter</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
